@@ -1,0 +1,10 @@
+@import "../common/weui.wxss";
+
+page {
+    background-color: #F8F8F8;
+}
+
+.address-body {
+    margin: 40rpx 0;
+}
+

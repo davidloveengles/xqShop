@@ -1,0 +1,104 @@
+@import "../common/weui.wxss";
+
+page {
+    background-color: #F8F8F8;
+}
+.bottom {
+    height: 30rpx;
+}
+
+.orderlist {
+    margin-top: 40rpx;
+    margin-bottom: 70rpx;
+}
+.orderlist-title {
+    font-size: 28rpx;
+    color: #999999;
+    margin-bottom: 10rpx;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+}
+.orderlist-body {
+    padding: 16rpx 20rpx;
+}
+.orderlist-body-item {
+    display: flex;
+    align-items: center;
+    padding: 8rpx 10rpx;
+    font-size: 30rpx;
+}
+.orderlist-body-item-name {
+    flex: 1;
+}
+.orderlist-body-item-count {
+    margin: 0 30rpx;
+    color: gray;
+}
+.orderlist-body-item-price {
+    
+}
+.orderlist-total {
+    font-size: 34rpx;
+    margin: 15rpx 30rpx;
+    text-align: right;
+    height: 40rpx;
+}
+
+
+.people-body {
+    padding: 12rpx 50rpx 14rpx 20rpx;
+    position: relative;
+}
+.people-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50rpx;
+    display: flex;
+    align-items: center;
+}
+.people-arrow {
+    width: 30rpx;
+    height: 30rpx;
+}
+.people-address {
+    font-size: 30rpx;
+    padding: 8rpx 10rpx;
+}
+.people-home {
+    font-size: 26rpx;
+    color: gray;
+    padding: 8rpx 10rpx;
+}
+.people-home-hidden {
+    display: none;
+    height: 0;
+}
+
+
+textarea {
+    width: 700rpx;
+    padding: 10rpx 0;
+    font-size: 30rpx
+}
+.textarea-wrp {
+    padding: 0 25rpx;
+    background-color: #fff;
+}
+
+
+.pay-section{
+  width: 100%;
+  margin-bottom: 60rpx;
+}
+.pay-section:last-child {
+  margin-bottom: 0;
+}
+.pay-section-title{
+  font-size: 28rpx;
+  color: #999999;
+  margin-bottom: 10rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}

@@ -1,0 +1,79 @@
+
+page {
+    background-color: #F8F8F8;
+}
+.loadview {
+    line-height: 1000rpx;
+    text-align: center;
+    font-size: 30rpx;
+    height: 0;
+}
+.loadview-show {
+   height: 1000rpx;
+}
+.page-top {
+    height: 30rpx;
+}
+.page-bottom {
+    height: 30rpx;
+}
+
+.order-item {
+    
+}
+.order-item-time-bg {
+    text-align: center;
+}
+.order-item-time {
+    display: inline-block;
+    font-size: 26rpx;
+    border: 1rpx solid rgb(225, 225, 225);
+    border-radius: 8rpx;
+    background-color: rgb(231, 231, 231);
+    padding: 2rpx 4rpx;
+}
+.order-item-body {
+    border: 1rpx solid rgb(225, 225, 225);
+    border-radius: 10rpx;
+    margin: 24rpx 30rpx 34rpx 30rpx;
+    padding: 20rpx;
+    background-color: white;
+}
+.order-item-top {
+    display: flex;
+    align-items: center;
+}
+.order-item-num {
+    font-size: 26rpx;
+    flex: 1;
+}
+.order-item-status {
+    font-size: 28rpx;
+    text-align: right;
+}
+.order-item-totalprice {
+    font-size: 30rpx;
+    text-align: right;
+}
+
+.order-item-foods {
+    /*background-color: lightblue;*/
+    padding: 20rpx 0;
+}
+.order-item-food {
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    padding: 8rpx 0rpx;
+    font-size: 22rpx;
+}
+.order-item-food-name {
+    flex: 1;
+}
+.order-item-food-count {
+    margin: 0 30rpx;
+    color: gray;
+}
+.order-item-food-price {
+
+}

@@ -1,0 +1,41 @@
+<!--orderList.wxml-->
+<view class="container">
+<view class="loadview {{(loadFail==true | (loadSuccess==true & orderList.length==0)) ? 'show' : ''}}">{{loadFail==true ? '加载数据失败' : ((loadSuccess==true & orderList.length==0) ? '还没有订单奥' : '')}}</view>
+
+
+<view class="page-top"></view>
+
+<block wx:for="{{orderList}}" wx:for-item="order" wx:key="{{order.id}}">
+<view class="order-item">
+
+<view class="order-item-time-bg"> 
+<view class="order-item-time">{{order.createTime}}</view></view>
+<!--body-->
+<view class="order-item-body">
+
+    <view class="order-item-top">
+    <view class="order-item-num">订单号：{{order.out_trade_no}}</view>
+    <view class="order-item-status">{{order.payWay}}</view>
+    </view>
+    
+<!--foods-->
+    <view class="order-item-foods">
+    <block wx:for="{{order.body.goods_detail}}" wx:for-item="food" wx:key="{{food.id}}">
+    <view class="order-item-food">
+        <view class="order-item-food-name">{{food.goods_name}}</view>
+            <view class="order-item-food-count">x {{food.quantity}}</view>
+            <view class="order-item-food-price">¥{{food.price / 100}}</view>
+    </view>
+    </block>
+    </view>
+
+    <view class="order-item-totalprice">¥{{order.total_fee / 100}}</view>
+
+</view>
+
+</view>
+</block>
+
+
+<view class="page-bottom"></view>
+</view>

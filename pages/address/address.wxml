@@ -1,0 +1,41 @@
+<!--address.wxml-->
+
+<view class="address-body">
+<view class="page-section">
+     
+      <view class="weui-cells weui-cells_after-title">
+
+      <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">联系人</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" type="text" placeholder="收货人姓名" name="key" value="{{peopleAddressData.name}}" bindinput="nameChange" focus="true"></input>
+          </view>
+        </view>
+
+<view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">联系电话</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" type="text" placeholder="收货人电话" name="key" value="{{peopleAddressData.phone}}" bindinput="phoneChange"></input>
+          </view>
+        </view>
+
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">送货地址</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" type="text" placeholder="小区/楼号/门牌号等" name="key" value="{{peopleAddressData.home}}" bindinput="homeChange"></input>
+          </view>
+        </view>
+
+      </view>
+ </view>
+ </view>
+
+ <view class="btn-area">
+        <button type="primary" bindtap="enterTouch" loading="{{loading}}">确定</button>
+      </view>

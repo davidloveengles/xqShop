@@ -1,0 +1,128 @@
+
+<view class="container">
+
+<!--header-->
+<view class="shop-header">
+<image src="{{userInfo.avatarUrl || '../../sources/product1.jpeg'}}" background-size="cover" class="header-avatar"></image>
+<view class="header-nickname">{{userInfo.nickName || '您好'}}
+</view>
+<view class="header-myorder" bindtap="myOrderTouch">我的订单</view>
+<image src="../../sources/icon_arrow.png" class="header-arrow" bindtap="myOrderTouch"></image>
+</view>
+
+
+
+
+<view class="shop">
+
+<!--left-->
+<scroll-view class="shop-left" scroll-y="true"> 
+<block wx:for="{{leftList}}" wx:key="{{item.id}}">
+   
+    <view class="shop-item">
+    <!--title-->
+    <view class="shop-item-title {{item.open ? 'shop-item-title-show' : ''}}"  catchtap="leftTitleTouch" id="{{item.id}}">{{item.name}}
+    <view class="shop-item-title-count {{item.count==0 ? 'shop-item-title-count-hidden' : ''}}">{{item.count}}</view>
+    </view>
+    <!--body-->
+    <view class="shop-item-body {{item.open ? 'shop-item-body-show' : ''}}" >
+        <block wx:for="{{item.subKinds}}" wx:for-item="e" wx:key="{{e.id}}">
+            <view class="shop-item-body-box {{item.open ? 'shop-item-body-box-show' : ''}}">
+            <!--e-->
+            <view class="shop-item-body-e {{e.open ? 'shop-item-body-e-select' : ''}}" id="{{e.id}}" catchtap="leftElementTouch">{{e.name}}
+            <view class="shop-item-body-e-count {{e.count==0 ? 'shop-item-body-e-count-hidden' : ''}}">{{e.count}}</view>
+            </view>
+            </view>
+        </block>
+    </view>
+    </view>
+    
+</block>
+</scroll-view>
+
+
+<!--right-->
+
+<!--<view class="shop-right">-->
+<scroll-view class="shop-right" scroll-y="true">
+<block wx:for="{{leftSelectSubObj.foods}}" wx:for-item="food" wx:key="{{food.id}}">
+
+     <!--food-->
+    <view class="shop-right-item" id="{{food.id}}">
+
+<image class="shop-right-item-img" src="{{food.icon}}"></image>
+
+    <view class="shop-right-item-right">
+     <view class="shop-right-item-title">{{food.name}}</view>
+
+     <view class="shop-right-item-body">
+     <view class="shop-right-item-price">¥{{food.price}}</view>
+   <!-- ＋－ -->
+   <image class="shop-right-item-jian {{food.count==0 ? 'shop-right-item-jian-hidden' : ''}}" src="../../sources/icon_jian.png" catchtap="countJianTouch" id="{{food.id}}"></image>
+    <view class="shop-right-item-count {{food.count==0 ? 'shop-right-item-count-hidden' : ''}}">{{food.count>0 ? food.count : ''}}</view>
+    
+         <view class="shop-right-item-jia-ainmationView" >
+        <image class="shop-right-item-jia" src="../../sources/icon_add.png"></image>
+            <view class="shop-right-item-jia-bottom" animation="{{food.animation}}" catchtap="countAddTouch" id="{{food.id}}"></view>
+         </view>
+    
+
+</view>
+     </view>
+    
+    </view>
+  
+</block>
+</scroll-view>
+<!--</view>-->
+
+
+
+</view>
+
+<!--shopCardView-->
+<view class="shopCard-bg {{cardViewIsShow ? '' : 'shopCard-bg-hidden'}}" catchtap="cardViewImgTouch" >
+<view class="shopCard-topcover"></view>
+<view class="shopCard-view" catchtap="cardViewTouch">
+
+<view class="shopCard-view-top">
+<view class="shopCard-view-title">购物车</view>
+<view class="shopCard-view-clear" catchtap="countClearTouch">清空</view>
+</view>
+
+
+<scroll-view class="shopCard-view-body" scroll-y="true"> 
+<block wx:for="{{storageCardData}}" wx:for-item="food" wx:key="{{food.id}}">
+
+<view class="shopCard-view-body-item">
+<view class="shopCard-view-body-item-name">{{food.name}}</view>
+<view class="shopCard-view-body-item-price">¥{{food.price * food.count}}</view>
+<!-- ＋－ -->
+   <image class="shopCard-view-body-item-jian" src="../../sources/icon_jian.png" catchtap="countJianTouch" id="{{food.id}}"></image>
+    <view class="shopCard-view-body-item-count">{{food.count>0 ? food.count : ''}}</view>
+<image class="shopCard-view-body-item-jia" src="../../sources/icon_add.png" catchtap="countAddTouch" id="{{food.id}}">
+</image>
+
+
+</view>
+
+
+  
+</block>
+</scroll-view>
+
+</view>
+</view>
+
+<!--bottom-->
+<view class="shop-bottom" catchtap="cardViewImgTouch">
+
+<image class="shop-bottom-img" src="{{storageCardData.length == 0 ? '../../sources/icon_cart_empty.png' : '../../sources/icon_cart_full.png'}}"></image>
+<view class="shop-bottom-count {{cardTotalCount==0 ? 'shop-bottom-count-hidden' : ''}}">{{cardTotalCount}}</view>
+
+<view class="shop-bottom-price">{{cardTotalPrice==0 ? '' : ('¥' + cardTotalPrice)}}</view>
+
+<view class="shop-bottom-buy" catchtap="goOrderTouch">{{cardTotalPrice==0 ? '购物车为空' : '去结算'}}</view>
+
+</view>
+</view>

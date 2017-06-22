@@ -1,0 +1,77 @@
+<!--order.wxml-->
+
+<view class="container">
+<form class="page-body" bindsubmit="submitForm"  report-submit="true">
+
+<!--订单-->
+<view class="orderlist">
+<view class="pay-section-title">订单详情</view>
+
+ <view class="weui-cells weui-cells_after-title">
+<view class="orderlist-body">
+<block wx:for="{{storageCardData}}" wx:key="{{item.id}}">
+    <view class="orderlist-body-item">
+      <view class="orderlist-body-item-name">{{item.name}}</view>
+        <view class="orderlist-body-item-count">x {{item.count}}</view>
+        <view class="orderlist-body-item-price">¥{{item.price}}</view>
+    </view>
+</block>
+</view>
+</view>
+
+<view class="orderlist-total">合计: ¥{{cardTotalPrice}}</view>
+
+</view>
+
+<!--收获信息-->
+<!--支付方式-->
+<view class="page-section" bindtap="goPeopleAddressTouch">
+      <view class="page-section-title">收货地址</view>
+      <view class="weui-cells weui-cells_after-title">
+
+        <view class="people-body">
+        <view class="people-address">{{peopleAddressData=='' ? '请添加一个收货地址' : (peopleAddressData.name + '      ' + peopleAddressData.phone)}}</view>
+        <view class="people-home {{peopleAddressData=='' ? 'people-home-hidden' : ''}}">{{peopleAddressData.home}}</view>
+        </view>
+
+        <view class="people-right">
+        <image src="../../sources/icon_arrow.png" class="people-arrow"></image>
+        </view>
+
+      </view>
+ </view>
+
+<!--备注留言-->
+ <view class="page-section">
+      <view class="page-section-title">客服留言</view>
+      <view class="textarea-wrp">
+        <textarea style="height: 3em" maxlength="30" cursor-spacing="20" placeholder="对该订单有什么其他要求(30字以内)" name="textarea"/>
+      </view>
+    </view>
+
+<!--支付方式-->
+<view class="page-section">
+      <view class="page-section-title">支付方式</view>
+      <view class="weui-cells weui-cells_after-title">
+        <radio-group bindchange="payWayChange">
+          <label class="weui-cell weui-check__label" wx:for="{{payWayList}}" wx:key="{{item.value}}">
+
+            <view class="weui-cell__hd">
+              <radio value="{{item.value}}" checked="{{item.checked}}" name="{{item.name}}"/>
+            </view>
+            <view class="weui-cell__bd">{{item.name}}</view>
+          </label>
+        </radio-group>
+      </view>
+ </view>
+
+<!--确定-->
+<view class="btn-area">
+<!--bindtap="enterTouch"-->
+        <button type="primary"  formType="submit" loading="{{loading}}">确定</button>
+      </view>
+
+ </form>
+
+ <view class="bottom"></view>
+</view>

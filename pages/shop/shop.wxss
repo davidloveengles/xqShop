@@ -1,0 +1,334 @@
+/*.container {
+    position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  font-size: 30rpx;
+  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+}*/
+
+
+.shop-header {
+    height: 180rpx;
+    background-color: dodgerblue;
+    display: flex;
+    align-items: center;
+}
+.header-avatar {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    margin-left: 40rpx;
+}
+.header-nickname {
+    color: white;
+    margin-left: 40rpx;
+}
+.header-myorder {
+    color: navajowhite;
+    font-size: 28rpx;
+    flex: 1;
+    text-align: right;
+}
+.header-arrow {
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 30rpx;
+}
+
+
+.shop-left {
+    width: 200rpx;
+    background-color: rgb(235, 235, 235);
+    position: absolute;
+    top: 180rpx;
+    bottom: 88rpx;
+    left: 0;
+}
+.shop-item {
+    text-align: center;
+    border-bottom: 0.5rpx solid rgb(225, 225, 225);
+    overflow: hidden;
+}
+.shop-item-title {
+    padding: 26rpx 0;
+    color: black;
+    font-size: 28rpx;
+}
+.shop-item-title-show {
+   /*opacity: 0.4;*/
+   color: dodgerblue;
+}
+.shop-item-title-count {
+    font-size: 16rpx;
+    padding: 0rpx 4rpx;
+    border-radius: 16rpx;
+    line-height: 16rpx;
+    color: white;
+    background-color: red;
+    position: absolute;
+    top: 4rpx;
+    right: 4rpx;
+}
+.shop-item-title-count-hidden {
+    display: none;
+}
+.shop-item-body {
+    font-size: 22rpx;
+    height: 0;
+}
+.shop-item-body-show {
+    height: auto;
+    background-color: rgb(225, 225, 225);
+}
+.shop-item-body-box {
+    opacity: 0;
+    transform: translateY(-30%);
+    transition: opacity .3s;
+}
+.shop-item-body-box-show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.shop-item-body-e {
+    padding: 20rpx 0;
+    color: gray;
+    position: relative;
+}
+.shop-item-body-e-select {
+    border-left: 8rpx solid dodgerblue;
+    background-color: white;
+}
+.shop-item-body-e-count {
+    font-size: 14rpx;
+    padding: 0rpx 4rpx 0rpx 4rpx;
+    line-height: 14rpx;
+    border-radius: 14rpx;
+    background-color: red;
+    color: white;
+    position: absolute;
+    top: 4rpx;
+    right: 4rpx;
+}
+.shop-item-body-e-count-hidden {
+    display: none;
+}
+
+
+
+.shop-right {
+    background-color: white;
+    position: absolute;
+    top: 180rpx;
+    bottom: 88rpx;
+    left: 200rpx;
+    right: 0;
+    width: 550rpx;
+    max-width:550rpx;
+    /*max-height:500rpx;*/
+    /*height: 600rpx;*/
+    /*overflow-y:auto;*/
+}
+.shop-right-item {
+    border-bottom: 0.5rpx solid lightblue;
+    padding: 24rpx 20rpx;
+    display: flex;
+}
+.shop-right-item-img {
+    width: 100rpx;
+    height: 100rpx;
+    background-color: lightblue;
+    margin: 4rpx 0;
+}
+.shop-right-item-right {
+    margin-left: 20rpx;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.shop-right-item-title {
+    font-size: 28rpx;
+    font-weight: bold;
+}
+.shop-right-item-body {
+    display: flex;
+    align-items: center;
+    margin-top: 4rpx;
+}
+.shop-right-item-price {
+    font-size: 32rpx;
+    color: red;
+    font-weight: bold;
+    flex: 1;
+}
+.shop-right-item-jia {
+    width: 44rpx;
+    height: 44rpx;
+    /*background-color: yellow;*/
+    
+}
+.shop-right-item-jia-ainmationView {
+    width: 44rpx;
+    height: 44rpx;
+    /*background-color: dodgerblue;*/
+}
+.shop-right-item-jia-bottom {
+    width: 44rpx;
+    height: 44rpx;
+    background-color: dodgerblue;
+    position: relative;
+    top: -48rpx;
+    opacity: 0;
+    border-radius: 50%;
+}
+.shop-right-item-jian {
+    width: 44rpx;
+    height: 44rpx;
+    /*background-color: blue;*/
+}
+.shop-right-item-jian-hidden {
+    height: 0;
+}
+.shop-right-item-count {
+    font-size: 30rpx;
+    padding: 0 16rpx;
+}
+.shop-right-item-count-hidden {
+    height: 0;
+}
+
+
+
+.shop-bottom {
+    position: absolute;
+    bottom: 0;
+    height: 88rpx;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    background-color: #444444;
+}
+.shop-bottom-img {
+    width: 110rpx;
+    height: 110rpx;
+    position: absolute;
+    left: 30rpx;
+    bottom: 0;
+}
+.shop-bottom-count {
+    position: absolute;
+    top: -20rpx;
+    left: 120rpx;
+    font-size: 18rpx;
+    padding: 0rpx 6rpx;
+    background-color: red;
+    border-radius: 10rpx;
+}
+.shop-bottom-count-hidden {
+    display: none;
+}
+.shop-bottom-price {
+    width: auto;
+    position: absolute;
+    top: 0;
+    left: 150rpx;
+    bottom: 0;
+    font-size: 30rpx;
+    padding-top: 20rpx;
+}
+.shop-bottom-buy {
+    width: 200rpx;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(62, 184, 47);
+    font-size: 30rpx;
+    line-height: 88rpx;
+}
+
+
+
+.shopCard-bg {
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 88rpx;
+}
+.shopCard-bg-hidden {
+    display: none;
+}
+.shopCard-topcover {
+
+}
+.shopCard-view {
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.shopCard-view-top {
+    background-color: #eeeeee;
+    height: 70rpx;
+    display: flex;
+    align-items: center;
+}
+.shopCard-view-title {
+    font-size: 26rpx;
+    font-weight: bold;
+    color: gray;
+    border-left: 4rpx solid deepskyblue;
+    padding-left: 8rpx;
+    margin-left: 20rpx;
+    flex: 1;
+}
+.shopCard-view-clear {
+    font-size: 26rpx;
+    color: gray;
+    padding-right: 24rpx;
+}
+.shopCard-view-body {
+    max-height: 800rpx;
+}
+.shopCard-view-body-item {
+    height: 100rpx;
+    display: flex;
+    align-items: center;
+    border-bottom: 0.5rpx solid lightblue;
+}
+.shopCard-view-body-item-name {
+     font-size: 26rpx;
+     padding-left: 20rpx;
+     flex: 1;
+}
+.shopCard-view-body-item-price {
+     font-size: 24rpx;
+     color: red;
+     padding: 0 26rpx;
+}
+.shopCard-view-body-item-jia {
+    width: 44rpx;
+    height: 44rpx;
+    margin-right: 20rpx;
+}
+.shopCard-view-body-item-jian {
+    width: 44rpx;
+    height: 44rpx;
+}
+.shopCard-view-body-item-count {
+    font-size: 26rpx;
+    padding: 0 16rpx;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}
