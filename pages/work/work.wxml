@@ -1,0 +1,54 @@
+<!--work.wxml-->
+
+<view class="work-body">
+
+ 
+<view class="page-section">
+     
+      <view class="weui-cells weui-cells_after-title">
+
+       <view class="weui-cell weui-cell_switch">
+          <view class="weui-cell__bd">{{workStatus==true ? '开启' : '休息'}}</view>
+          <view class="weui-cell__ft">
+            <switch checked="{{workStatus==true}}" bindchange="switchChange"/>
+          </view>
+        </view>
+
+ </view>
+ </view>
+
+<view class="page-section">
+<view class="weui-cells weui-cells_after-title">
+<view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd">
+            <input class="weui-input" type="text" placeholder="营业信息" name="key" value="{{tipmsg}}" bindinput="tipChange"></input>
+          </view>
+        </view>
+    <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__bd">
+            <input class="weui-input" type="text" placeholder="营业电话" name="key" value="{{phone}}" bindinput="phoneChange"></input>
+          </view>
+          </view>
+     </view> 
+</view>
+
+ </view>
+
+<!--<view class="message">
+<view class="page-section">
+
+      <view class="page-section-title">营业信息</view>
+      <view class="textarea-wrp">
+        <textarea style="height: 3em" maxlength="30" cursor-spacing="20" placeholder="营业时间、电话" name="textarea"/>
+      </view>
+
+    </view>
+</view>-->
+
+
+
+
+ <view class="btn-area">
+        <button type="primary" bindtap="enterTouch" loading="{{loading}}">确定修改</button>
+      </view>
+

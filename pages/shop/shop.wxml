@@ -3,11 +3,21 @@
 
 <!--header-->
 <view class="shop-header">
-<image src="{{userInfo.avatarUrl || '../../sources/product1.jpeg'}}" background-size="cover" class="header-avatar"></image>
-<view class="header-nickname">{{userInfo.nickName || '您好'}}
+    <image src="{{userInfo.avatarUrl || '../../sources/product1.jpeg'}}" background-size="cover" class="header-avatar" bindtap="myIconTouch"></image>
+    <view class="header-nickname">{{userInfo.nickName || '您好'}}
+    </view>
+    <view class="header-right">
+        <view class="header-right-view">
+        <view class="header-myorder" bindtap="myOrderTouch">我的订单</view>
+         <image src="../../sources/icon_arrow.png" class="header-arrow" bindtap="myOrderTouch"></image>
+        </view>
+    </view>
 </view>
-<view class="header-myorder" bindtap="myOrderTouch">我的订单</view>
-<image src="../../sources/icon_arrow.png" class="header-arrow" bindtap="myOrderTouch"></image>
+
+<view class="shop-header-notify">
+<image src="../../sources/icon_tip.png" class="shop-header-notify-img1  {{tipmsg.length==0 ? 'shop-header-notify-img1-hidden' : ''}}"></image>
+<view class="shop-header-notify-title   {{tipmsg.length==0 ? 'shop-header-notify-title-hidden' : ''}}" bindtap="callPhoneTouch">{{tipmsg + phone}}</view>
+<!--<image src="../../sources/icon_arrow.png" class="shop-header-notify-img2"></image>-->
 </view>
 
 
@@ -17,24 +27,29 @@
 
 <!--left-->
 <scroll-view class="shop-left" scroll-y="true"> 
-<block wx:for="{{leftList}}" wx:key="{{item.id}}">
+<block wx:for="{{leftList}}" wx:for-item="item" wx:key="{{item.id}}">
    
     <view class="shop-item">
     <!--title-->
     <view class="shop-item-title {{item.open ? 'shop-item-title-show' : ''}}"  catchtap="leftTitleTouch" id="{{item.id}}">{{item.name}}
     <view class="shop-item-title-count {{item.count==0 ? 'shop-item-title-count-hidden' : ''}}">{{item.count}}</view>
+    <view class="shop-item-title-right">
+     <image class="shop-item-title-right-arrow {{item.nosub==true ? 'shop-item-title-right-arrow-hidden' : ''}}" src="../../sources/down_arrow.png"></image>
+     </view>
     </view>
     <!--body-->
-    <view class="shop-item-body {{item.open ? 'shop-item-body-show' : ''}}" >
-        <block wx:for="{{item.subKinds}}" wx:for-item="e" wx:key="{{e.id}}">
-            <view class="shop-item-body-box {{item.open ? 'shop-item-body-box-show' : ''}}">
+      <!-- <view wx:if="{{item.open && item.nosub == false}}" class="shop-item-body {{(item.open && item.nosub == false) ? 'shop-item-body-show' : ''}}" > -->
+      <view wx:if="{{item.open && item.nosub == false}}" class="shop-item-body-show" >
+         <block wx:for="{{item.subKinds}}" wx:for-item="e" wx:key="{{e.id}}">
+             <!-- <view class="shop-item-body-box {{item.open ? 'shop-item-body-box-show' : ''}}">   -->
+            <view class="shop-item-body-box-show"> 
             <!--e-->
-            <view class="shop-item-body-e {{e.open ? 'shop-item-body-e-select' : ''}}" id="{{e.id}}" catchtap="leftElementTouch">{{e.name}}
+             <view class="shop-item-body-e {{e.open ? 'shop-item-body-e-select' : ''}}" id="{{e.id}}" catchtap="leftElementTouch">{{e.name}}
             <view class="shop-item-body-e-count {{e.count==0 ? 'shop-item-body-e-count-hidden' : ''}}">{{e.count}}</view>
             </view>
             </view>
-        </block>
-    </view>
+         </block> 
+      </view>  
     </view>
     
 </block>
@@ -50,7 +65,7 @@
      <!--food-->
     <view class="shop-right-item" id="{{food.id}}">
 
-<image class="shop-right-item-img" src="{{food.icon}}"></image>
+<image class="shop-right-item-img" src="{{host + '/' + food.img}}"></image>
 
     <view class="shop-right-item-right">
      <view class="shop-right-item-title">{{food.name}}</view>
@@ -100,7 +115,7 @@
 <!-- ＋－ -->
    <image class="shopCard-view-body-item-jian" src="../../sources/icon_jian.png" catchtap="countJianTouch" id="{{food.id}}"></image>
     <view class="shopCard-view-body-item-count">{{food.count>0 ? food.count : ''}}</view>
-<image class="shopCard-view-body-item-jia" src="../../sources/icon_add.png" catchtap="countAddTouch" id="{{food.id}}">
+<image class="shopCard-view-body-item-jia" src="../../sources/icon_add.png" catchtap="countAddInCardTouch" id="{{food.id}}">
 </image>
 
 
@@ -122,7 +137,7 @@
 
 <view class="shop-bottom-price">{{cardTotalPrice==0 ? '' : ('¥' + cardTotalPrice)}}</view>
 
-<view class="shop-bottom-buy" catchtap="goOrderTouch">{{cardTotalPrice==0 ? '购物车为空' : '去结算'}}</view>
+<view class="shop-bottom-buy" catchtap="goOrderTouch">{{cardTotalPrice==0 ? '购物车为空' : (workStatus==1 ? '去结算' : '暂停营业')}}</view>
 
 </view>
 </view>

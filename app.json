@@ -3,12 +3,13 @@
         "pages/shop/shop",
         "pages/order/order",
         "pages/address/address",
-        "pages/orderList/orderList"
+        "pages/orderList/orderList",
+        "pages/work/work"
     ],
     "window": {
         "backgroundTextStyle": "dark",
         "navigationBarBackgroundColor": "#1E90FF",
         "navigationBarTextStyle": "white",
-        "backgroundColor":"#F8F8F8"
+        "backgroundColor": "#F8F8F8"
     }
 }

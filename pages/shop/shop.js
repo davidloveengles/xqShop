@@ -1,143 +1,13 @@
 // shop.js
 const requestAllFoods = require('../../config').requestAllFoods
+const requestShopMsgUrl = require('../../config').requestShopMsgUrl
+const nethost = require('../../config').host
 var app = getApp()
 
 Page({
 
   data: {
       leftList: [],
-    leftList2 : [
-        {
-            id: 10,
-            name: "素食",
-            open: false,
-            count: 10,
-            subKinds: [{
-                id: 1, open: false, name: "方便面榨菜", count: 0, foods: [{ id: 10001, img: "", name: "巧面馆老坛酸菜方便面红油味桶面", price: 4.5, count: 0, icon: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1496204658603&di=cf5b7faadac35ac74989598d353962d4&imgtype=0&src=http%3A%2F%2Fs4.sinaimg.cn%2Fmw690%2F001hYbJBgy6DCQkjv4Dc3%26690" }, { id: 10002, img: "", name: "豫竹香辣牛肉方便面68g", price: 1.5,  count: 0, icon: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1496204658603&di=cf5b7faadac35ac74989598d353962d4&imgtype=0&src=http%3A%2F%2Fs4.sinaimg.cn%2Fmw690%2F001hYbJBgy6DCQkjv4Dc3%26690" }]
-            }, {
-                    id: 2, select: false, name: "辣条一元等", count: 0, foods: []
-                }, {
-                    id: 3, select: false, name: "肉肠凤爪类", count: 0, foods: []
-            }, {
-                    id: 4, select: false, name: "蛋类", count: 0, foods: []
-            }]
-        },
-        {
-            id: 1,
-            name: "代买香烟",
-            open: false,
-            subKinds: [{
-                id: 1001, select: false, name: "烟具", foods: []
-            }, {
-                    id: 1002, select: false, name: "10元以下", foods: []
-                }, {
-                    id: 1003, select: false, name: "10-20元", foods: []
-            }, {
-                    id: 1004, select: false, name: "10-20元", foods: []
-                }, {
-                    id: 1005, select: false, name: "20-50元", foods: []
-            }, {
-                    id: 1006, select: false, name: "50-100元", foods: []
-            }, {
-                    id: 1007, select: false, name: "整条购", foods: []
-            }]
-        },
-        {
-            id: 2,
-            name: "饮品", open: false,
-            subKinds: [{
-                id: 2001, select: false, name: "水", foods: []
-            }, {
-                    id: 2002, select: false, name: "碳酸饮料", foods: []
-            }, {
-                    id: 2003, select: false, name: "功能饮料", foods: []
-            }, {
-                    id: 2004, select: false, name: "果汁饮品", foods: []
-            }, {
-                    id: 2005, select: false, name: "茶饮料", foods: []
-            }, {
-                    id: 2006, select: false, name: "奶茶咖啡", foods: []
-            }, {
-                    id: 2007, select: false, name: "冲泡饮品", foods: []
-            }]
-        },
-        {
-            id: 3,
-            name: "冷饮冰激凌",
-            open: false,
-            subKinds: [{
-                id: 3001, select: false, name: "2元以下", foods: []
-            }, {
-                    id: 3002, select: false, name: "2-5元", foods: []
-            }]
-        },
-        {
-            id: 4,
-            name: "牛奶面包蛋糕",
-            open: false,
-            subKinds: [{
-                id: 4001, select: false, name: "牛奶", foods: []
-            }, {
-                    id: 4002, select: false, name: "酸奶", foods: []
-            }, {
-                    id: 4003, select: false, name: "面包", foods: []
-            }, {
-                    id: 4004, select: false, name: "糕点", foods: []
-            }]
-        },
-        {
-            id: 5,
-            name: "零食饼干坚果",
-            open: false,
-            subKinds: [{
-                id: 5001, select: false, name: "饼干", foods: []
-            }, {
-                    id: 5002, select: false, name: "坚果", foods: []
-            }, {
-                    id: 5003, select: false, name: "锅巴", foods: []
-            }, {
-                    id: 5004, select: false, name: "薯片", foods: []
-            }, {
-                    id: 5005, select: false, name: "膨化食品", foods: []
-            }, {
-                    id: 6, select: false, name: "蜜饯", foods: []
-            }]
-        },
-        {
-            id: 6,
-            name: "果糖巧克力",
-            open: false,
-            subKinds: [{
-                id: 6001, select: false, name: "棒棒糖", foods: []
-            }, {
-                    id: 6002, select: false, name: "口香糖", foods: []
-            }]
-        },
-        {
-            id: 7,
-            name: "酒",
-            open: false,
-            subKinds: [{
-                id: 7001, select: false, name: "啤酒", foods: []
-            }, {
-                    id: 7002, select: false, name: "白酒", foods: []
-            }]
-        },
-        {
-            id: 8,
-            name: "纸品湿巾",
-            open: false,
-            subKinds: [{
-                id: 8001, select: false, name: "抽纸", foods: []
-            }, {
-                    id: 8002, select: false, name: "卷纸", foods: []
-            }, {
-                    id: 8003, select: false, name: "女士用品", foods: []
-            }, {
-                    id: 8004, select: false, name: "整提卷纸", foods: []
-            }]
-        },
-    ],
     leftSelectId: 0,
     leftSelectSubObj: {},
     storageCardData: [],
@@ -146,31 +16,67 @@ Page({
     cardViewIsShow: false,
     userInfo: {},
 
+    host: nethost,
+
+    tipmsg: "",
+    phone: null,
+    workStatus: true,
+
     // add动画
-    currentAddFoodAnimation: {},
-    currentAddFoodId: null,
+    // currentAddFoodAnimation: {},
+    // currentAddFoodId: null,
   },
 /** 选择左边标题*/
     leftTitleTouch: function (e) {
 
         var id = e.currentTarget.id, list = this.data.leftList;
+        
+        const listLength = list.length
+        for (var i = 0; i < listLength; i++) {
 
-        for (var i = 0; i < list.length; i++) {
+            var kind = list[i]
+            if (kind.id == id){
+                var subList = kind.subKinds
+                if (kind.nosub == true) {
 
-            if (list[i].id == id){
-                list[i].open = !list[i].open;
+                    if (kind.open == true) {
+                        return
+                    }
+                    kind.open = true
+                }else {
+                    kind.open = !kind.open;
+                }
+             
                 this.data.leftSelectId = id;
 
                 // 选择的子页重置select状态
-                var subList = list[i].subKinds
-                for (var j = 0; j < subList.length; j++) {
-                    subList[j].select = false;
+                var selectSubkind = null
+                var sublistFirst = subList[0]
+                if (subList.length > 0) {
+                    sublistFirst.open = true;
+                    selectSubkind = sublistFirst
                 }
+                
+                const subListLength = subList.length
+                for (var j = 0; j < subListLength; j++) {
+                    var subkind = subList[j]
+                    if (j != 0 && subkind.open == true) {
+                        sublistFirst.open = false;
+                        selectSubkind = subkind
+                        break
+                    }
+                }
+                if (kind.open == true) {
 
+                    this.setData({
+                        leftSelectSubObj: selectSubkind
+                    })
+                }
             }else {
-                list[i].open = false;
+                kind.open = false;
             }
         }
+
         this.setData ({
             leftList: list,
             leftSelectId: this.data.leftSelectId
@@ -179,77 +85,145 @@ Page({
 /** 选择左边子标题*/
     leftElementTouch: function (e) {
         
-        var id = e.currentTarget.id, list = this.data.leftList;
-        for (var i = 0; i < list.length; i++) {
-            if (list[i].id == this.data.leftSelectId) {
-                var subList = list[i].subKinds;
-                for (var j = 0; j < subList.length; j++) {
+        var id = e.currentTarget.id
+        this.leftElementSelect(id)
+    },
+    leftElementSelect: function (id) {
+      
+        var list = this.data.leftList;
+        const listLength = list.length
+        for (var i = 0; i < listLength; i++) {
+            var kind = list[i]
+            if (kind.id == this.data.leftSelectId) {
+                var subList = kind.subKinds;
+                const subListLength = subList.length
+                for (var j = 0; j < subListLength; j++) {
 
-                    if (subList[j].id == id ) {
-                        subList[j].open = true;
-                        this.data.leftSelectSubObj = subList[j];
+                    var subKind = subList[j]
+                    if (subKind.id == id) {
+                        subKind.open = true;
+                        this.data.leftSelectSubObj = subKind;
 
                         // add动画有关逻辑（切回来还能看见动画轨迹的bug），清空animation
-                        for (var x = 0; x < subList[j].foods.length; x++) {
-                            subList[j].foods[x].animation = null
-                        }
-                    }else{
-                        subList[j].open = false;
+                        // for (var x = 0; x < subList[j].foods.length; x++) {
+                        //     subList[j].foods[x].animation = null
+                        // }
+                    } else {
+                        subKind.open = false;
                     }
                 }
-                
-            } 
+                break
+            }
         }
-       
+
         this.setData({
             leftList: list,
+            // leftSelectSubObj: this.data.leftSelectSubObj
+        })
+        this.setData({
+            // leftList: list,
             leftSelectSubObj: this.data.leftSelectSubObj
         })
+       
     },
 
 /** 合并购物车数据和网络数据*/
-    handleLeftListData: function () {
+    handleLeftListData: function (isOperate) {
 
         var list = this.data.leftList;
         var carList = this.data.storageCardData;
-        for (var i = 0; i < list.length; i++) {
-            
-            list[i].count = 0;
-            var pagesObj = list[i].subKinds;
-            for (var j = 0; j < pagesObj.length; j++) {
-                pagesObj[j].count = 0;
-                var foodsObj = pagesObj[j].foods;
-                for (var k = 0; k < foodsObj.length; k++){
-                    
-                    var foodObj = foodsObj[k];
-                    // add动画
-                    if (this.currentAddFoodId == foodObj.id) {
-                        foodObj.animation = this.currentAddFoodAnimation
-                    }else {
-                        foodObj.animation = null
-                    }
-                    foodObj.count = 0;
-                    for (var x = 0; x < carList.length; x++) {
-                       
-                        var cardObj = carList[x];
-                        if (cardObj.id == foodObj.id) {
-                            // 每个商品选择的数量
-                            foodObj.count = cardObj.count; 
-                            // 左边子类选择的数量 
-                            pagesObj[j].count += foodObj.count;
-                            // 网络数据里除了id都可能有变，所以把购物车的数据再刷新一下
-                            cardObj = foodObj;
+
+        if (isOperate == false) {
+            const listLength = list.length
+            for (var i = 0; i < listLength; i++) {
+
+                list[i].count = 0;
+                var pagesObj = list[i].subKinds;
+                const pagesLength = pagesObj.length
+                for (var j = 0; j < pagesLength; j++) {
+                    pagesObj[j].count = 0;
+                    var foodsObj = pagesObj[j].foods;
+                    const foodsObjLength = foodsObj.length
+                    for (var k = 0; k < foodsObjLength; k++) {
+
+                        var foodObj = foodsObj[k];
+                        // add动画
+                        // if (this.currentAddFoodId == foodObj.id) {
+                        //     foodObj.animation = this.currentAddFoodAnimation
+                        // }else {
+                        //     foodObj.animation = null
+                        // }
+                        foodObj.count = 0;
+                        const carListLength = carList.length
+                        for (var x = 0; x < carListLength; x++) {
+
+                            var cardObj = carList[x];
+                            if (cardObj.id == foodObj.id) {
+                                // 每个商品选择的数量
+                                foodObj.count = cardObj.count;
+                                // 左边子类选择的数量 
+                                pagesObj[j].count += foodObj.count;
+                                // 网络数据里除了id都可能有变，所以把购物车的数据再刷新一下
+                                cardObj = foodObj;
+                            }
                         }
                     }
+                    // 大标题类型选择的总数量
+                    list[i].count += pagesObj[j].count;
+
+                    if (pagesObj[j].id == this.data.leftSelectSubObj.id && pagesObj[j].name == this.data.leftSelectSubObj.name) {
+                        this.data.leftSelectSubObj = pagesObj[j];
+                    }
+
                 }
-                // 大标题类型选择的总数量
-                list[i].count += pagesObj[j].count;
+            }
+        }else {
+            const listLength = list.length
+            for (var i = 0; i < listLength; i++) {
 
+                var kindobj = list[i]
+                kindobj.count = 0
+                
+                var subKinds = kindobj.subKinds;
+                const subKindsLength = subKinds.length
+                for (var j = 0; j < subKindsLength; j++) {
 
-                if (pagesObj[j].id == this.data.leftSelectSubObj.id && pagesObj[j].name == this.data.leftSelectSubObj.name){
-                    this.data.leftSelectSubObj = pagesObj[j];
+                    var subkindObj = subKinds[j]
+                    subkindObj.count = 0
+                    const carListLength = carList.length
+                    for (var x = 0; x < carListLength; x++) {
+                       
+                        var cardObj = carList[x];
+                        if (cardObj.ppid == kindobj.id) {
+
+                            if (cardObj.pid == subkindObj.id || cardObj.pid == -1) {
+                                var foodsObj = subkindObj.foods;
+                                const foodsObjLength = foodsObj.length
+                                for (var k = 0; k < foodsObjLength; k++) {
+                                    var foodObj = foodsObj[k];
+
+                                    if (cardObj.id == foodObj.id) {
+                                        // 每个商品选择的数量
+                                        foodObj.count = cardObj.count;
+                                        // 左边子类选择的数量 
+                                        subkindObj.count += foodObj.count;
+
+                                    }
+                                }
+                            }
+                           
+                        }
+                    }
+                    
+                    // 大标题类型选择的总数量
+                    if (subkindObj.count > 0) { 
+                        kindobj.count += subkindObj.count;
+                    }
+                    if (subkindObj.id == this.data.leftSelectSubObj.id && subkindObj.name == this.data.leftSelectSubObj.name) {
+                        this.data.leftSelectSubObj = subkindObj;
+                        console.log(this.data.leftSelectSubObj)
+                    }
                 }
-
             }
         }
 
@@ -257,11 +231,13 @@ Page({
         // 计算总数量和总价格
         var newCardList = carList.concat();
         var cardTotalCount = 0, cardTotalPrice = 0;
-        for (var i = 0; i < carList.length; i++) {
+        const carListLength = carList.length
+        for (var i = 0; i < carListLength; i++) {
             
             var cardObj = carList[i];
             if (cardObj.count == 0) {
-                for (var j = 0; j < newCardList.length; j++) {
+                const newcarListLength = newCardList.length
+                for (var j = 0; j < newcarListLength; j++) {
                     if (newCardList[j] == cardObj) {
                         newCardList.splice(j,1);
                     }
@@ -280,26 +256,29 @@ Page({
         }
 
         this.setData({
-            leftList: list,
+            // leftList: list,
             leftSelectSubObj: this.data.leftSelectSubObj,
             storageCardData: newCardList,
             cardTotalCount: cardTotalCount,
             cardTotalPrice: Math.floor(cardTotalPrice * 100) / 100
         })
+        this.setData({
+            leftList: list
+        })
 
         this.setCardStorage(newCardList);
 
         // add动画逻辑，置空数据
-        this.currentAddFoodId = null
-        this.currentAddFoodAnimation = null
+        // this.currentAddFoodId = null
+        // this.currentAddFoodAnimation = null
     },
     /** - */
     countJianTouch: function (e) {
 
         var id = e.currentTarget.id;
-        var cardList = this.data.storageCardData;
-
-        for (var i = 0; i < cardList.length; i++) {
+        var cardList = this.data.storageCardData
+        const cardListLength = cardList.length
+        for (var i = 0; i < cardListLength; i++) {
             var cardObj = cardList[i];
             if (cardObj.id == id) {
                 if (cardObj.count > 0) {
@@ -308,60 +287,85 @@ Page({
                 break;
             }
         }
-        
-        this.handleLeftListData();
+
+        this.handleLeftListData(true);
     },
     /** + */
-    countAddTouch: function (e) {
-
-        // 1.获取当前模型
+    // 从购物车+
+    countAddInCardTouch: function (e) {
         var id = e.currentTarget.id;
+        this.countAdd(true, id)
+    },
+    // 从右边+
+    countAddTouch: function (e) {
+        var id = e.currentTarget.id;
+        this.countAdd(false, id)
+    },
+    countAdd: function (fromCard, id) {
+
         var currentFood;
-        var foods = this.data.leftSelectSubObj.foods;
-        for (var i = 0; i < foods.length; i++) {
-            var food = foods[i];
-            if (food.id == id) {
-                currentFood = food;
-                break;
+        if (fromCard == false) {
+            // 1.获取当前模型
+            var foods = this.data.leftSelectSubObj.foods
+            const foodsLength = foods.length
+            for (var i = 0; i < foodsLength; i++) {
+                var food = foods[i];
+                if (food.id == id) {
+                    currentFood = food;
+                    break;
+                }
             }
-        }
-        
-       // 2.增加数量
-        if (currentFood.count == 99) {
+
+            // 2.增加数量
+            if (currentFood.count == 99) {
                 console.log("单品最大数量99");
                 return
-        }else {
-            currentFood.count += 1;
-        }
+            } else {
+                currentFood.count += 1;
+            }
 
-        // 3.动画
-        // if (this.data.cardViewIsShow == false) {
-        //     this.beginCardAnimation(e)
-        // }
 
-        // 4. 修改购物车数据
-        var cardList = this.data.storageCardData;
-            var cardContainsCurrentFood = false;
-            for (var i = 0; i < cardList.length; i++) {
+            // 3.判断购物车是否有该商品
+            var cardList = this.data.storageCardData;
+            var cardCoutainThis = false
+            const cardListLength = cardList.length
+            for (var i = 0; i < cardListLength; i++) {
                 var cardObj = cardList[i];
-                if (currentFood.id == cardObj.id) {
-                    cardContainsCurrentFood = true;
-                    cardList[i] = currentFood;
+                if (cardObj.id == id) {
+                    cardObj.count = currentFood.count
+                    cardCoutainThis = true
                     break;
+                }
             }
-            }
-            if (cardContainsCurrentFood == false) {
+
+            // 3.第一次添加，加到购物车
+            if (cardCoutainThis == false) {
                 cardList[cardList.length] = currentFood;
             }
-        
+        } else {
+            // 1.获取当前模型
+            var cardList = this.data.storageCardData;
+            const cardListLength = cardList.length
+            for (var i = 0; i < cardListLength; i++) {
+                var cardObj = cardList[i];
+                if (cardObj.id == id) {
+                    currentFood = cardObj;
+                    break;
+                }
+            }
+
+            // 2.增加数量
+            if (currentFood.count == 99) {
+                console.log("单品最大数量99");
+                return
+            } else {
+                currentFood.count += 1;
+            }
+        }
+
 
         // 5.修改大模型数组的数据
-        this.handleLeftListData();
-
-        // 
-        this.setData({
-            countJianFromCard: false
-        })
+        this.handleLeftListData(true);
     },
     /**清空购物车 */
     countClearTouch: function () {
@@ -372,7 +376,7 @@ Page({
             cardObj.count = 0;
         }
 
-        this.handleLeftListData();
+        this.handleLeftListData(true);
     },
 
 /**本地化数据 */
@@ -452,8 +456,21 @@ Page({
     cardViewTouch: function (e) {
         // 这个方法是为了阻止事件冒泡
     },
+    // 打电话
+    callPhoneTouch: function () {
+        var phone = this.data.phone
+        if (phone!= null && phone.length > 0) {
+            wx.makePhoneCall({
+                phoneNumber: this.data.phone
+            })
+        }
+    },
     /**去结算跳转 */
     goOrderTouch: function () {
+
+        if (this.data.workStatus == 0) {
+            return;
+        }
         if (this.data.cardTotalPrice == 0) {
             return;
         }
@@ -467,12 +484,60 @@ Page({
             url: '../orderList/orderList'
         })
     },
+    /** 点击我的头像 */
+    myIconTouch: function () {
+
+        app.getUserOpenId(function (err, openid) {
+console.log(openid)
+            if (!err && openid =="ozxD-0G8VslMeTlo0UUN06M0mYJw") {
+                wx.navigateTo({
+                    url: '../work/work'
+                })
+            }
+        })
+       
+    },
+    // tipMsgTouch: function () {
+    //     wx.navigateTo({
+    //         url: '../orderList/shopMsg'
+    //     })
+    // },
     /**网络请求 */
+    // 营业信息（营业时间，是否营业，电话等）
+    requestShopMsg: function () {
+        var self = this
+
+        wx.request({
+            url: requestShopMsgUrl,
+            data: {
+                // noncestr: Date.now()
+            },
+            success: function (result) {
+                console.log("营业信息")
+                console.log(result)
+                if (result.data.status == 1) {
+                    var data = JSON.parse(result.data.data)
+                    console.log("获取营业信息成功")
+                    self.setData({
+                        tipmsg: data.tip,
+                        phone: data.phone,
+                        workStatus: data.open
+                    })
+
+                } else {
+                }
+            },
+            fail: function ({errMsg}) {
+                console.log('request fail', errMsg)
+            }
+        })
+    },
     requestLeftList: function () {
         var self = this
 
-        self.setData({
-            loading: true
+        wx.showLoading({
+            title: '加载网络数据...',
+            mask: true
         })
 
         wx.request({
@@ -484,7 +549,7 @@ Page({
                 'content-type': 'application/json'
             },
             success: function (result) {
-
+                wx.hideLoading()
                 if (result.data.status == 1) {
                     var data = JSON.parse(result.data.data)
                     console.log("获取所有商品信息成功")
@@ -492,7 +557,7 @@ Page({
                     self.setData({
                         leftList: data
                     })
-                    self.handleLeftListData();
+                    self.handleLeftListData(false);
                 }else {
                     wx.showToast({
                         title: '获取数据失败',
@@ -505,7 +570,7 @@ Page({
             },
             fail: function ({errMsg}) {
                 console.log('request fail', errMsg)
-                
+                wx.hideLoading()
                 wx.showToast({
                     title: '获取数据失败',
                     icon: 'success',
@@ -545,7 +610,9 @@ Page({
    */
   onShow: function () {
       this.getCardStorage();
-      this.handleLeftListData();
+      this.handleLeftListData(false);
+
+      this.requestShopMsg()
   },
 
   /**

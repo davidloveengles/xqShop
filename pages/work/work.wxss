@@ -1,0 +1,24 @@
+@import "../common/weui.wxss";
+
+
+page {
+    background-color: #F8F8F8;
+}
+
+.work-body {
+    margin: 40rpx 0;
+}
+
+textarea {
+    width: 700rpx;
+    padding: 10rpx 0;
+    font-size: 30rpx
+}
+.textarea-wrp {
+    padding: 0 25rpx;
+    background-color: #fff;
+}
+
+.message {
+    margin-top: 70;
+}

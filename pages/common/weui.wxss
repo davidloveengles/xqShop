@@ -87,6 +87,10 @@
   padding-top: 0;
   padding-bottom: 0;
 }
+.weui-cell_switch {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
 .weui-label {
   width: 105px;
   word-wrap: break-word;

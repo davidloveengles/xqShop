@@ -19,6 +19,10 @@ var config = {
     requestOrdersUrl: `${host}/xq/order/all`,
     // 货到付款下单url
     requestOrderUrl: `${host}/xq/order/order`,
+    // 获取营业信息url
+    requestShopMsgUrl: `${host}/xq/shopmsg/query`,
+    // 设置营业信息url
+    requestSetShopMsgUrl: `${host}/xq/shopmsg/set`,
     
 
     // 用code换取openId
